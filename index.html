@@ -1,9 +1,183 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>Meu Site</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Site Pessoal</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      overflow: hidden;
+      background: linear-gradient(135deg, #667eea, #29084b);
+      color: white;
+    }
+
+    .screen {
+      width: 100%;
+      height: 100vh;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+      animation: fade 0.8s ease-in-out;
+    }
+
+    .active {
+      display: flex;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /*card*/
+    .card {
+      background: rgba(246, 247, 246, 0.95);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      max-width: 750px;
+      width: 90%;
+      color: black;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: black;
+    }
+
+    h2 {
+      font-size: 2.2em;
+      margin-bottom: 15px;
+      color: black;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      line-height: 1.6;
+      color: black;
+    }
+
+    img {
+      width: 170px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin: 15px 0;
+      border: 4px solid white;
+    }
+
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      background: #764ba2;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 10px;
+    }
+
+    button:hover {
+      background: #5a357d;
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
-    <h1>Meu site está funcionando 🚀</h1>
-</body>  
+
+  <!--tela inicial--> 
+  <section class="screen active" id="screen1">
+    <div class="card">
+      <h2>Quem sou eu?</h2>
+      <img src="Lucas.jpg" alt="Sua Foto">
+      <p>Um pouco sobre mim</p>
+      <button onclick="nextScreen(2)">Entrar</button>
+    </div>
+  </section>
+
+  <!--quem sou eu -->
+  <section class="screen" id="screen2">
+    <div class="card">
+      <h2>Sobre Mim</h2>
+      <p><strong>Nome:</strong>Lucas Vinicius</p>
+      <p><strong>Data de nascimento:</strong>dia 1 de setembro de 2007 </p>
+      <p><strong>Quem sou:</strong>Sou um jovem estudioso, observador, tentando transformar curiosidade, fé e ambição em algo grande.</p>
+      <button onclick="nextScreen(1)">Voltar</button>
+      <button onclick="nextScreen(3)">Próximo</button>
+    </div>
+  </section>
+
+  <!-- gostos -->
+  <section class="screen" id="screen3">
+    <div class="card">
+      <h2>Coisas que Gosto</h2>
+      <p>Tecnologia e informática, programação, piscina, praia, caminhar e criar momentos com pessoas maravilhosas </p>
+      <button onclick="nextScreen(2)">Voltar</button>
+      <button onclick="nextScreen(4)">Próximo</button>
+    </div>
+  </section>
+
+  <!-- Objetivos -->
+  <section class="screen" id="screen4">
+    <div class="card">
+      <h2>objetivos para vida </h2>
+      <p>Trabalhar na área de TI, terminar minha faculdade, construir minha família</p>
+      <button onclick="nextScreen(3)">Voltar</button>
+      <button onclick="nextScreen(5)">Próximo</button>
+    </div>
+  </section>
+
+  <!-- Pessoa ou Momento Especial -->
+  <section class="screen" id="screen5">
+    <div class="card">
+      <h2>Pessoa ou Momento Especial</h2>
+      <img src="foto-especial.jpg" alt="Foto Especial">
+      <p>INFO AQUI</p>
+      <button onclick="nextScreen(4)">Voltar</button>
+      <button onclick="nextScreen(6)">Próximo</button>
+    </div>
+  </section>
+
+  <!-- Final -->
+  <section class="screen" id="screen6">
+    <div class="card">
+      <h2>Mensagem Final</h2>
+      <p>INFO AQUI</p>
+      <button onclick="nextScreen(1)">Voltar ao Início</button>
+    </div>
+  </section>
+
+  <script>
+    function nextScreen(screenNumber) {
+      let screens = document.querySelectorAll('.screen');
+
+      screens.forEach(function(screen) {
+        screen.classList.remove('active');
+      });
+
+      document.getElementById('screen' + screenNumber).classList.add('active');
+    }
+  </script>
+
+</body>
 </html>
